@@ -11,6 +11,10 @@ var webdriver = require('selenium-webdriver'),
     var chrome = require('selenium-webdriver/chrome');
     var path = require('chromedriver').path;
 
+    if(global.headless === 'true') {
+      path = _projectdir + '/node_modules/chromedriver/lib/chromedriver/chromedriver';
+    }
+
     var service = new chrome.ServiceBuilder(path).build();
     chrome.setDefaultService(service);
 
