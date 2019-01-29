@@ -1,3 +1,4 @@
+require('./globals.webdriver.js')
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
     until = webdriver.until;
@@ -14,13 +15,23 @@ var webdriver = require('selenium-webdriver'),
     chrome.setDefaultService(service);
 
     (async () => {
+      var chromeCapabilities = webdriver.Capabilities.chrome();
+      //setting chrome options to start the browser fully maximized
+      if(global.headless === 'true') {
+        var chromeOptions = {
+          'args': ['--headless', '--disable-gpu'/*, '--no-sandbox', '--disable-setuid-sandbox'*/]
+        };
+        chromeCapabilities.set('chromeOptions', chromeOptions);
+      }
+
       var driver = await new webdriver.Builder()
-        .withCapabilities(webdriver.Capabilities.chrome())
+        .withCapabilities(chromeCapabilities)
         .build();
+
+
       await driver.get('https://www.google.com/');
       await driver.findElement(webdriver.By.name('q')).sendKeys('selenium', webdriver.Key.ENTER);
 
-      //await driver.wait(webdriver.until.elementLocated(webdriver.By.linkText('Selenium - Web Browser Automation')));
       await driver.findElement(webdriver.By.tagName('h3')).click();
 
       const title = await driver.getTitle();
