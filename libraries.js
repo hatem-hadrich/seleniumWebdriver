@@ -10,10 +10,10 @@ var webdriver = require('selenium-webdriver'),
 
     var chrome = require('selenium-webdriver/chrome');
     var path = require('chromedriver').path;
-    console.log(path)
-    if(global.headless === 'true') {
-      path = _projectdir + '/node_modules/chromedriver/lib/chromedriver/chromedriver.exe';
-    }
+
+    // if(global.headless === 'true') {
+    //   path = _projectdir + '/node_modules/chromedriver/lib/chromedriver/chromedriver';
+    // }
 
     var service = new chrome.ServiceBuilder(path).build();
     chrome.setDefaultService(service);
@@ -39,7 +39,6 @@ var webdriver = require('selenium-webdriver'),
       await driver.findElement(webdriver.By.tagName('h3')).click();
 
       const title = await driver.getTitle();
-      console.log(title)
       expect(title).to.equal('Selenium - Web Browser Automation');
 
       var list = await driver.findElements(webdriver.By.xpath("//*[contains(text(),'What is Selenium?')]"));
