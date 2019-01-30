@@ -4,17 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exempleTest": "node_modules\\mocha\\bin\\mocha testWithMocha.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chromedriver": "^2.45.0",
-    "geckodriver": "^1.14.1",
-    "selenium-webdriver": "^4.0.0-alpha.1"
+    "chromedriver": "2.45.0",
+    "selenium-webdriver": "4.0.0-alpha.1",
+    "mocha": "5.2.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-string": "^1.5.0"
+    "chai-string": "^1.5.0",
+    "mochawesome": "^2.3.0"
   }
 }
