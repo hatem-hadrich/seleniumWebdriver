@@ -11,24 +11,27 @@ var webdriver = require('selenium-webdriver'),
     var chrome = require('selenium-webdriver/chrome');
     var path = require('chromedriver').path;
 
-    if(global.headless === 'true') {
-      path = _projectdir + '/node_modules/chromedriver/lib/chromedriver/chromedriver';
-    }
+    // if(global.headless === 'true') {
+    //   //path = _projectdir + '/node_modules/chromedriver/lib/chromedriver/chromedriver';
+    //   //path = _projectdir + '\\node_modules\\chromedriver\\lib\\chromedriver\\chromedriver.exe';
+    //   //path = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+    // }
 
-    var service = new chrome.ServiceBuilder(path).build();
-    chrome.setDefaultService(service);
+    // var service = new chrome.ServiceBuilder(path).build();
+    // chrome.setDefaultService(service);
 
     (async () => {
       var chromeCapabilities = webdriver.Capabilities.chrome();
       //setting chrome options to start the browser fully maximized
       if(global.headless === 'true') {
         var chromeOptions = {
-          'args': ['--headless', '--disable-gpu'/*, '--no-sandbox', '--disable-setuid-sandbox'*/]
+          'args': ['--headless', '--disable-gpu', '--no-sandbox'/*, '--disable-setuid-sandbox'*/],
+          //'binary': path
         };
         chromeCapabilities.set('chromeOptions', chromeOptions);
       }
 
-      var driver = await new webdriver.Builder()
+      var driver = new webdriver.Builder()
         .withCapabilities(chromeCapabilities)
         .build();
 
