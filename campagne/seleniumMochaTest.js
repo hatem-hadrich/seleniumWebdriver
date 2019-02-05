@@ -14,6 +14,6 @@ scenario('Check text in selenium site', () => {
     test('should put the title', () => client.waitAndSetValue('q', 'selenium'));
     test('should click on first result link', () => client.WaitAndClickButton('h3'));
     test('should check page title', () => client.checkPageTitle('Selenium - Web Browser Automation'));
-    test('should check the existance of "What is Selenium?"', () => client.checkTextValue("//*[contains(text(), %T)]", 'What is Selenium?'));
+    test('should check the existance of "What is Selenium?"', () => client.checkTextValue("//*[contains(text(), '%T')]", 'What is Selenium?'));
   }, 'common_client');
 }, 'common_client', true);

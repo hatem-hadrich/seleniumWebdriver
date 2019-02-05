@@ -37,7 +37,10 @@ class CommonClient {
   }
 
   checkPageTitle() {
-    return this.client.getTitle().then((title) => {
+    this.client
+    .sleep(5000)
+    return this.client
+    .getTitle().then((title) => {
       expect(title).to.equal('Selenium - Web Browser Automation');
     });
   }

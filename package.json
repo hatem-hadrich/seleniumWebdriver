@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "exempleTest": "node_modules/.bin/mocha campagne/seleniumMochaTest.js --require ./helpers.js --timeout 400000 --slow 45000 --reporter mochawesome"
+    "exempleTest": "node_modules/.bin/mocha campagne/seleniumMochaTest.js --require ./helpers.js --timeout 400000 --slow 45000 --reporter mochawesome --HEADLESS true"
   },
   "author": "Hadrich-Hatem",
   "license": "ISC",
